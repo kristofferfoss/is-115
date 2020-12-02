@@ -3,15 +3,21 @@
 ?>
 
 <section class="signup-form">
-  <h2>Registrer</h2>
+  <h2>Registrering</h2>
   <div class="signup-form-form">
     <form action="includes/signup.inc.php" method="post">
-      <input type="text" name="name" placeholder="Fullt navn">
-      <input type="text" name="email" placeholder="E-post">
-      <input type="text" name="uid" placeholder="Brukernavn">
-      <input type="password" name="pwd" placeholder="Passord">
-      <input type="password" name="pwdrepeat" placeholder="Gjenta passord">
-      <button type="submit" name="submit">Registrer</button>
+      Fullt navn:<input type="text" name="name" placeholder="Fullt navn">
+      Epost:<input type="text" name="email" placeholder="E-post">
+      Brukernavn:<input type="text" name="uid" placeholder="Brukernavn">
+      Fødselsdato:<input type="date" name="dob" required>
+      Kjønn:<br><select name="kjønn" id="kjønn" required>
+        <option value="mann">Mann</option>
+        <option value="dame">Dame</option>
+        <option value="annet">Annet</option>
+      </select><br>
+      Passord:<input type="password" name="pwd" placeholder="Passord">
+      Gjenta passord:<input type="password" name="pwdrepeat" placeholder="Gjenta passord">
+      <button type="submit" name="submit">Registrer deg</button>
     </form>
   </div>
   <?php

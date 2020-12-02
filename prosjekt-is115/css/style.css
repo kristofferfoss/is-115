@@ -2,6 +2,10 @@ body {
   background-color: #333333;
 }
 
+table {
+  border-collapse: collapse;
+}
+
 .wrapper {
   width: 900px;
   margin: 0 auto;
@@ -95,7 +99,7 @@ section {
 
 .profilboks {
   text-align: center;
-}
+} 
 
 .index-designere-list {
   display: flex;
@@ -140,4 +144,31 @@ section {
   padding: 10px 20px;
   margin: 10px auto;
   cursor: pointer;
+}
+
+.medlem-tabell table {
+        border-collapse: collapse;
+        border: 1px solid black;
+        width: 100%;
+        color: black;
+        font-family: monospace;
+        font-size: 25px;
+        text-align: left;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 10px;
+    }
+    th {
+        background-color: black;
+        color: white;
+        font-weight: bold;
+    }
+    tr:nth-child(even) {background-color: #D6D6D6}
+    h2 {
+        text-align: center;
+        color: #000000;
+        font-size: 50px;
+        font-family: "Comic Sans MS", cursive, sans-serif;
+        text-decoration: underline;
+    }
 }

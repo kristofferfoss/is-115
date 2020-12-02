@@ -1,9 +1,9 @@
 <?php
 
 // Check for empty input signup
-function emptyInputSignup($name, $email, $username, $pwd, $pwdRepeat) {
+function emptyInputSignup($name, $email, $username, $fødselsdato, $pwd, $pwdRepeat) {
 	$result;
-	if (empty($name) || empty($email) || empty($username) || empty($pwd) || empty($pwdRepeat)) {
+	if (empty($name) || empty($email) || empty($username) || empty($fødselsdato) || empty($pwd) || empty($pwdRepeat)) {
 		$result = true;
 	}
 	else {
@@ -75,8 +75,8 @@ function uidExists($conn, $username) {
 }
 
 // Insert new user into database
-function createUser($conn, $name, $email, $username, $pwd) {
-  $sql = "INSERT INTO users (usersName, usersEmail, usersUid, usersPwd) VALUES (?, ?, ?, ?);";
+function createUser($conn, $name, $email, $username, $fødselsdato, $kjønn, $pwd) {
+  $sql = "INSERT INTO users (usersName, usersEmail, usersUid, usersDob, usersKjønn, usersPwd) VALUES (?, ?, ?, ?, ?, ?);";
 
 	$stmt = mysqli_stmt_init($conn);
 	if (!mysqli_stmt_prepare($stmt, $sql)) {
@@ -86,7 +86,7 @@ function createUser($conn, $name, $email, $username, $pwd) {
 
 	$hashedPwd = password_hash($pwd, PASSWORD_DEFAULT);
 
-	mysqli_stmt_bind_param($stmt, "ssss", $name, $email, $username, $hashedPwd);
+	mysqli_stmt_bind_param($stmt, "ssssss", $name, $email, $username, $fødselsdato, $kjønn, $hashedPwd);
 	mysqli_stmt_execute($stmt);
 	mysqli_stmt_close($stmt);
 	mysqli_close($conn);
