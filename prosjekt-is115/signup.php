@@ -6,7 +6,8 @@
   <h2>Registrering</h2>
   <div class="signup-form-form">
     <form action="includes/signup.inc.php" method="post">
-      Fullt navn:<input type="text" name="name" placeholder="Fullt navn">
+      Fornavn:<input type="text" name="firstname" placeholder="Fornavn">
+      Etternavn:<input type="text" name="lastname" placeholder="Etternavn">
       Epost:<input type="text" name="email" placeholder="E-post">
       Brukernavn:<input type="text" name="uid" placeholder="Brukernavn">
       Fødselsdato:<input type="date" name="dob" required>

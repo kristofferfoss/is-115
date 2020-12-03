@@ -3,13 +3,14 @@
 if (isset($_POST["submit"])) {
 
   // First we get the form data from the URL
-  $name = $_POST["name"];
+  $firstname = ucfirst($_POST["firstname"]);
+  $lastname = ucfirst($_POST["lastname"]);
   $email = $_POST["email"];
   $username = $_POST["uid"];
   $pwd = $_POST["pwd"];
   $pwdRepeat = $_POST["pwdrepeat"];
   $fødselsdato = $_POST["dob"];
-  $kjønn = $_POST["kjønn"];
+  $kjønn = ucfirst($_POST["kjønn"]);
 
   // Then we run a bunch of error handlers to catch any user mistakes we can (you can add more than I did)
   // These functions can be found in functions.inc.php
@@ -19,7 +20,7 @@ if (isset($_POST["submit"])) {
 
   // Left inputs empty
   // We set the functions "!== false" since "=== true" has a risk of giving us the wrong outcome
-  if (emptyInputSignup($name, $email, $username, $fødselsdato, $pwd, $pwdRepeat) !== false) {
+  if (emptyInputSignup($firstname, $lastname, $email, $username, $fødselsdato, $pwd, $pwdRepeat) !== false) {
     header("location: ../signup.php?error=emptyinput");
     exit();
   }
@@ -47,7 +48,7 @@ if (isset($_POST["submit"])) {
   // If we get to here, it means there are no user errors
 
   // Now we insert the user into the database
-  createUser($conn, $name, $email, $username, $fødselsdato, $kjønn, $pwd);
+  createUser($conn, $firstname, $lastname, $email, $username, $fødselsdato, $kjønn, $pwd);
 
 } else {
   header("location: ../signup.php");

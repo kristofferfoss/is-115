@@ -58,10 +58,6 @@ nav img {
   width: 60px;
 }
 
-nav ul {
-
-}
-
 nav ul li {
   list-style: none;
   float: left;
@@ -171,4 +167,10 @@ section {
         font-family: 'Roboto', sans-serif;
 
     }
-}
+    table, th, td {
+      border: 1px solid black;
+      padding: 15px;
+      text-align: left;
+      margin-left: auto;
+      margin-right: auto;
+    }  
