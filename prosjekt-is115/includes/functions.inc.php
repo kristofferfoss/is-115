@@ -1,9 +1,9 @@
 <?php
 
 // Check for empty input signup
-function emptyInputSignup($firstname, $lastname, $email, $username, $fødselsdato, $pwd, $pwdRepeat) {
+function emptyInputSignup($firstname, $lastname, $email, $mobilnummer, $adresse, $postno, $poststed, $username, $fødselsdato, $pwd, $pwdRepeat) {
 	$result;
-	if (empty($firstname) || empty($lastname) || empty($email) || empty($username) || empty($fødselsdato) || empty($pwd) || empty($pwdRepeat)) {
+	if (empty($firstname) || empty($lastname) || empty($email) || empty($mobilnummer) || empty($adresse) || empty($postno) || empty($poststed) || empty($username) || empty($fødselsdato) || empty($pwd) || empty($pwdRepeat)) {
 		$result = true;
 	}
 	else {
@@ -16,6 +16,18 @@ function emptyInputSignup($firstname, $lastname, $email, $username, $fødselsdat
 function invalidUid($username) {
 	$result;
 	if (!preg_match("/^[a-zA-Z0-9]*$/", $username)) {
+		$result = true;
+	}
+	else {
+		$result = false;
+	}
+	return $result;
+}
+
+// Check invalid postnumber
+function invalidPostno($postno) {
+	$result;
+	if (strlen($postno) != 4) {
 		$result = true;
 	}
 	else {
@@ -75,8 +87,8 @@ function uidExists($conn, $username) {
 }
 
 // Insert new user into database
-function createUser($conn, $firstname, $lastname, $email, $username, $fødselsdato, $kjønn, $pwd) {
-  $sql = "INSERT INTO users (usersFirstname, usersLastname, usersEmail, usersUid, usersDob, usersKjonn, usersPwd) VALUES (?, ?, ?, ?, ?, ?, ?);";
+function createUser($conn, $firstname, $lastname, $email, $mobilnummer, $adresse, $postno, $poststed, $regdato, $username, $fødselsdato, $kjønn, $pwd) {
+  $sql = "INSERT INTO users (usersFirstname, usersLastname, usersEmail, usersUid, usersDob, usersKjonn, usersPwd, usersPhone, usersPostno, usersPostplace, usersAddress, usersRegdate) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 	
 	$stmt = mysqli_stmt_init($conn);
 	if (!mysqli_stmt_prepare($stmt, $sql)) {
@@ -86,7 +98,7 @@ function createUser($conn, $firstname, $lastname, $email, $username, $fødselsda
 
 	$hashedPwd = password_hash($pwd, PASSWORD_DEFAULT);
 
-	mysqli_stmt_bind_param($stmt, "sssssss", $firstname, $lastname, $email, $username, $fødselsdato, $kjønn, $hashedPwd);
+	mysqli_stmt_bind_param($stmt, "sssssssiisss", $firstname, $lastname, $email, $username, $fødselsdato, $kjønn, $hashedPwd, $mobilnummer, $postno, $poststed, $adresse, $regdato);
 	mysqli_stmt_execute($stmt);
 	mysqli_stmt_close($stmt);
 	mysqli_close($conn);
