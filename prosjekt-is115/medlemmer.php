@@ -14,11 +14,16 @@
 <table>
 	<tr>
 		<th>Brukernavn</th>
-		<th>Fødselsdato</th>
+		<th>Medlem siden</th>
 		<th>Epost</th>
 		<th>Kjønn</th>
 	</tr>
 <?php 
+if (!isset($_SESSION['useruid']))
+{
+    header("Location: login.php");
+    die();
+}
 $conn = mysqli_connect("localhost", "root", "", "phpproject01");
 if ($conn-> connect_error) {
     die("Connection failed. ". $conn-> connect_error);
@@ -28,7 +33,7 @@ $resultat = $conn-> query($sql);
 
 if ($resultat-> num_rows > 0) {
     while ($row = $resultat-> fetch_assoc()) {
-        echo "<tr><td>". $row['usersUid'] . "</td><td>". $row['usersDob'] . "</td><td>". $row['usersEmail'] . "</td><td>". $row['usersKjonn']. "</td></tr>";
+        echo "<tr><td>". $row['usersUid'] . "</td><td>". $row['usersRegdate'] . "</td><td>". $row['usersEmail'] . "</td><td>". $row['usersKjonn']. "</td></tr>";
     }
     echo "</table>";
 }
