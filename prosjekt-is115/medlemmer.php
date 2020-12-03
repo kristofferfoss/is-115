@@ -13,7 +13,7 @@
 <h2>Medlemsliste</h2>
 <table>
 	<tr>
-		<th>Navn</th>
+		<th>Brukernavn</th>
 		<th>Fødselsdato</th>
 		<th>Epost</th>
 		<th>Kjønn</th>
@@ -28,7 +28,7 @@ $resultat = $conn-> query($sql);
 
 if ($resultat-> num_rows > 0) {
     while ($row = $resultat-> fetch_assoc()) {
-        echo "<tr><td>". $row['usersUid'] . "</td><td>". $row['usersDob'] . "</td><td>". $row['usersEmail'] . "</td><td>". $row['usersKjønn']. "</td></tr>";
+        echo "<tr><td>". $row['usersUid'] . "</td><td>". $row['usersDob'] . "</td><td>". $row['usersEmail'] . "</td><td>". $row['usersKjonn']. "</td></tr>";
     }
     echo "</table>";
 }
