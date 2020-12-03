@@ -23,6 +23,7 @@
           <li><a href="index.php">Hjem</a></li>
           <?php
             if (isset($_SESSION["useruid"])) {
+              echo "<li><a href='admin.php'>Admin</a></li>";
               echo "<li><a href='medlemmer.php'>Medlemmer</a></li>";
               echo "<li><a href='profil.php'>Din Profil</a></li>";
               echo "<li><a href='logout.php'>Logg Ut</a></li>";
