@@ -27,6 +27,9 @@
       ?>
     </section>
   </div>
+<section> 
+ <button onclick="location.href='endreProfil.php'">Rediger profilinfo</button>
+</section>
 </body>
 <?php
   include_once 'footer.php';
