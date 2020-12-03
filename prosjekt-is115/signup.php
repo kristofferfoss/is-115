@@ -9,6 +9,10 @@
       Fornavn:<input type="text" name="firstname" placeholder="Fornavn">
       Etternavn:<input type="text" name="lastname" placeholder="Etternavn">
       Epost:<input type="text" name="email" placeholder="E-post">
+      Mobilnummer: <input type="number" name="mobilnummer" placeholder="Mobilnummer">
+      Adresse:<input type="text" name="address" placeholder="Adresse">
+      Postnummer: <input type="number" name="postno" placeholder="Postnummer">
+      Poststed:<input type="text" name="poststed" placeholder="Poststed">
       Brukernavn:<input type="text" name="uid" placeholder="Brukernavn">
       Fødselsdato:<input type="date" name="dob" required>
       Kjønn:<br><select name="kjønn" id="kjønn" required>
@@ -29,6 +33,9 @@
       }
       else if ($_GET["error"] == "invaliduid") {
         echo "<p>Velg et ordentlig brukernavn!</p>";
+      }
+      else if ($_GET["error"] == "invalidpostno") {
+        echo "<p>Velg et ordentlig postnummer! (4 sifre)</p>";
       }
       else if ($_GET["error"] == "invalidemail") {
         echo "<p>Velg en ordentlig E-post!</p>";
