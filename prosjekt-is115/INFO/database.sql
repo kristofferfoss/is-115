@@ -11,5 +11,6 @@ CREATE TABLE users (
   usersUid varchar(128) NOT NULL,
   usersDob date NOT NULL,
   usersKjonn varchar(5) NOT NULL,
-  usersPwd varchar(128) NOT NULL
+  usersPwd varchar(128) NOT NULL,
+  user_level int(11) DEFAULT '0'
 );

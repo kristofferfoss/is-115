@@ -1,5 +1,4 @@
 <?php
-
 // Check for empty input signup
 function emptyInputSignup($firstname, $lastname, $email, $mobilnummer, $adresse, $postno, $poststed, $username, $fødselsdato, $pwd, $pwdRepeat) {
 	$result;
@@ -140,5 +139,20 @@ function loginUser($conn, $username, $pwd) {
 		$_SESSION["useruid"] = $uidExists["usersUid"];
 		header("location: ../index.php?error=none");
 		exit();
+	}
+	define ('USER_LEVEL_ADMIN', '1');
+	if (!isAdmin() ) {
+		header("location: ../index.php?error=none");
+	}
+	elseif (isAdmin() ) {
+		header("location: ..//admin.php");
+	}
+}
+
+function isAdmin() {
+	if (isset($_SESSION['usersId']) && $_SESSION['usersId'] && USER_LEVEL_ADMIN == $_SESSION['usersId']['users_level']) {
+		return true;
+	} else {
+		return false;
 	}
 }
