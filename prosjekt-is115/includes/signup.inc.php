@@ -17,7 +17,7 @@ if (isset($_POST["submit"])) {
   $fødselsdato = $_POST["dob"];
   $kjønn = ucfirst($_POST["kjønn"]);
 
-  // Then we run a bunch of error handlers to catch any user mistakes we can 
+  // Then we run a bunch of error handlers to catch any user mistakes we can (you can add more than I did)
   // These functions can be found in functions.inc.php
 
   require_once "dbh.inc.php";
