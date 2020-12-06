@@ -12,18 +12,10 @@ CREATE TABLE users (
   usersDob date NOT NULL,
   usersKjonn varchar(5) NOT NULL,
   usersPwd varchar(128) NOT NULL,
-  user_level int(11) DEFAULT '0'
-  info_id int(11),
-  CONSTRAINT info_id FOREIGN KEY (info_id) REFERENCES userInfo(infoId)
-);
-
-CREATE TABLE userInfo (
-  infoId int(11) PRIMARY KEY AUTO_INCREMENT NOT NULL,
-  infoInterests varchar(120) NOT NULL,
-  infoActivity varchar(120) NOT NULL,
-  infoStatus int(1) NOT NULL,
-  info_usersId int NOT NULL,
-  CONSTRAINT FK_users_id FOREIGN KEY (info_usersId) REFERENCES users(usersId)
+  user_level int(11) DEFAULT '0',
+  userInterests varchar(120),
+  userActivity varchar(120),
+  userKontigent int(1) DEFAULT '0',
 );
 
 CREATE TABLE rolls (
@@ -35,8 +27,8 @@ CREATE TABLE rolls (
 
 CREATE TABLE activity (
   activityId int(11) PRIMARY KEY AUTO_INCREMENT NOT NULL,
-  activityDesc varchar(200) NOT NULL
-  activityDate date PRIMARY KEY NOT NULL,
+  activityDesc varchar(200) NOT NULL,
+  activityDate date NOT NULL,
   activityAnsvarlig varchar(120) NOT NULL,
   activityStarttid time NOT NULL,
   activitySlutttid time NOT NULL,
@@ -48,4 +40,4 @@ CREATE TABLE booking (
   booking_userId int(11) NOT NULL,
   CONSTRAINT FK_activity_id FOREIGN KEY (booking_activityId) REFERENCES activity(activityId),
   CONSTRAINT FK_users_id3 FOREIGN KEY (booking_userId) REFERENCES users(usersId)
-)
+);
