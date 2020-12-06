@@ -18,7 +18,7 @@ CREATE TABLE users (
 );
 
 CREATE TABLE userInfo (
-  infoId int(11) PRIMARY KEY NOT NULL,
+  infoId int(11) PRIMARY KEY AUTO_INCREMENT NOT NULL,
   infoInterests varchar(120) NOT NULL,
   infoActivity varchar(120) NOT NULL,
   infoStatus int(1) NOT NULL,
@@ -27,8 +27,25 @@ CREATE TABLE userInfo (
 );
 
 CREATE TABLE rolls (
-  rollId int(11) PRIMARY KEY NOT NULL,
+  rollId int(11) PRIMARY KEY AUTO_INCREMENT NOT NULL,
   rollDescription varchar(200) NOT NULL,
   rolls_usersId int NOT NULL,
   CONSTRAINT FK_users_id2 FOREIGN KEY (rolls_usersId) REFERENCES users(usersId)
+);
+
+CREATE TABLE activity (
+  activityId int(11) PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  activityDesc varchar(200) NOT NULL
+  activityDate date PRIMARY KEY NOT NULL,
+  activityAnsvarlig varchar(120) NOT NULL,
+  activityStarttid time NOT NULL,
+  activitySlutttid time NOT NULL,
+  activitySted varchar(120) NOT NULL
+);
+
+CREATE TABLE booking (
+  booking_activityId int(11) NOT NULL,
+  booking_userId int(11) NOT NULL,
+  CONSTRAINT FK_activity_id FOREIGN KEY (booking_activityId) REFERENCES activity(activityId),
+  CONSTRAINT FK_users_id3 FOREIGN KEY (booking_userId) REFERENCES users(usersId)
 )
