@@ -26,6 +26,49 @@
             echo "<tr><td><strong> Klubb ID: </strong><br>" . $row['usersId'] . "</td><td><strong> Kjønn: </strong><br>" . $row['usersKjonn'] . "</td><td><strong> Fødselsdato: </strong><br>" . $row['usersDob'] . "</td><td><strong> Brukernavn: </strong><br>" . $row['usersUid'] . "</td></tr>"; 
         }
         echo "</table";
+    }
+    function displayMoreInfo($conn) 
+    {    
+        $ID = $_SESSION["userid"]; 
+
+        $sql = "SELECT userInterests, userKontigent FROM users WHERE usersId = ?;";
+
+        mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+        
+        $stmt = mysqli_stmt_init($conn);
+        
+        mysqli_stmt_prepare($stmt, $sql);
+        
+        mysqli_stmt_bind_param($stmt, "i", $ID);
+        
+        mysqli_stmt_execute($stmt);
+        
+        
+        $results = mysqli_stmt_get_result($stmt);
+       
+        while($row = mysqli_fetch_assoc($results))
+        {
+            if(empty($row['userInterests'])) 
+            {
+                echo "Du har ikke lagt til noen interesser. <br>";
+                echo "Legg til dine interresser:";
+                echo "<form action='includes/profil.inc.php' method='post'> <input type='text' name='interesser' placeholder='Interesser'> <button type='submit' name='editInteresser' value='editInteresser'>Legg til Interesser</button>";
+            }
+            else 
+            {
+                echo "<strong> Interesser:  </strong>" . $row['userInterests'];
+                echo "<form action='includes/profil.inc.php' method='post'> Endre Interesser: <input type='text' name='interesser' placeholder='Interesser'> <button type='submit' name='editInteresser' value='editInteresser'>Endre Interesser</button>";
+            }
+            
+            if (empty($row['userKontigent'])) 
+            {
+                echo "<br>Kontigent er ikke betalt.";
+            }
+            else 
+            {
+                echo "<br>Kontigent er betalt.";
+            }
+        }
         mysqli_close($conn); 
     }
 
@@ -149,6 +192,21 @@
         header("location: ../endreProfil.php");
     }
 
+    if (isset($_POST["editInteresser"])) 
+    {
+        $interesser = ucfirst($_POST["interesser"]);
+
+        session_start();
+
+        $ID = $_SESSION["userid"];
+
+        include "dbh.inc.php";
+
+        editInteresser($conn, $interesser, $ID);
+        
+        header("location: ../profil.php");
+    }
+
    function editFirstname($conn, $firstname, $ID)
     {
         $sql = "UPDATE users SET usersFirstname = '$firstname' WHERE usersId = $ID";
@@ -243,6 +301,19 @@
     function editKjonn($conn, $kjonn, $ID)
     {
         $sql = "UPDATE users SET usersKjonn = '$kjonn' WHERE usersId = $ID";
+        
+        $stmt = mysqli_stmt_init($conn);
+        
+        mysqli_stmt_prepare($stmt, $sql);
+        
+        mysqli_stmt_execute($stmt);
+
+        mysqli_close($conn); 
+    }
+
+    function editInteresser($conn, $interesser, $ID)
+    {
+        $sql = "UPDATE users SET userInterests = '$interesser' WHERE usersId = $ID";
         
         $stmt = mysqli_stmt_init($conn);
         

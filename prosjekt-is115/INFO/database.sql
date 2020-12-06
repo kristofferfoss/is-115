@@ -14,7 +14,6 @@ CREATE TABLE users (
   usersPwd varchar(128) NOT NULL,
   user_level int(11) DEFAULT '0',
   userInterests varchar(120),
-  userActivity varchar(120),
   userKontigent int(1) DEFAULT '0',
 );
 

@@ -30,7 +30,8 @@
           require_once "includes/aktivitet.inc.php";
           require_once "includes/dbh.inc.php";
           bookActivity($conn, $actID);
-        }
+        }  
+        
       ?>
     </section>
   </div>

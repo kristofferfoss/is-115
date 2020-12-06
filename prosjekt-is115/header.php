@@ -26,8 +26,8 @@
               echo "<li><a href='admin.php'>Admin</a></li>";
               echo "<li><a href='medlemmer.php'>Medlemmer</a></li>";
               echo "<li><a href='profil.php'>Din Profil</a></li>";
+              echo "<li><a href='aktivitet.php'>Aktiviteter</a></li>";
               echo "<li><a href='logout.php'>Logg Ut</a></li>";
-
             }
             else {
               echo "<li><a href='signup.php'>Registrer</a></li>";

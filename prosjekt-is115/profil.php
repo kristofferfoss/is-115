@@ -15,22 +15,38 @@
 <body>
 <section class="profil-intro">
   <h1>~ Neo Ungdomsklubb ~</h1>
-  <p>Din profil</p>
+  <h3>Din profil</h3>
 </section>
-  <div class="tab-panel">
-    <section id="Informasjon" class="tab-panel">
-      <?php
-      if (!isset($_SESSION['useruid']))
-      {
-          header("Location: login.php");
-      die();
-      }
-        require_once "includes/profil.inc.php";
-        require_once "includes/dbh.inc.php";
-        displayInfo($conn);
-      ?>
-    </section>
-  </div>
+<div class="tab-panel">
+  <section id="Informasjon" class="tab-panel">
+    <?php
+    if (!isset($_SESSION['useruid']))
+    {
+        header("Location: login.php");
+    die();
+    }
+    echo "<h3><center> Medlemsinformasjon </center><h3> <br>";
+      require_once "includes/profil.inc.php";
+      require_once "includes/dbh.inc.php";
+      displayInfo($conn);
+    ?>
+  </section>
+</div>
+<div class="tab-panel">
+  <section id="Informasjon" class="tab-panel">
+    <?php
+    if (!isset($_SESSION['useruid']))
+    {
+        header("Location: login.php");
+    die();
+    }
+      echo "<h3><center> Ytterligere Informajson </center><h3> <br>";
+      require_once "includes/profil.inc.php";
+      require_once "includes/dbh.inc.php";
+      displayMoreInfo($conn);
+    ?>
+  </section>
+</div>
 <section> 
  <button onclick="location.href='endreProfil.php'">Rediger profilinfo</button>
 </section>
