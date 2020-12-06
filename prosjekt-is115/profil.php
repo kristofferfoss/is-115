@@ -44,6 +44,12 @@
       require_once "includes/profil.inc.php";
       require_once "includes/dbh.inc.php";
       displayMoreInfo($conn);
+
+      echo "<br>";
+      echo "<h3><center> Aktivitetshistorikk </center><h3> <br>";
+      require_once "includes/profil.inc.php";
+      require_once "includes/dbh.inc.php";
+      displayActivityHistory($conn);
     ?>
   </section>
 </div>

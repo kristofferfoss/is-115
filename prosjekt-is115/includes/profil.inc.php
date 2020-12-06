@@ -69,6 +69,33 @@
                 echo "<br>Kontigent er betalt.";
             }
         }
+    }
+
+    function displayActivityHistory($conn) 
+    {
+        $ID = $_SESSION["userid"]; 
+
+        $sql = "SELECT activity.activityDesc, activity.activityDate FROM booking INNER JOIN activity ON booking.booking_activityId = activity.activityId INNER JOIN users ON booking.booking_userId = users.usersId WHERE users.usersId = ?;";
+
+        mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+        
+        $stmt = mysqli_stmt_init($conn);
+        
+        mysqli_stmt_prepare($stmt, $sql);
+        
+        mysqli_stmt_bind_param($stmt, "i", $ID);
+        
+        mysqli_stmt_execute($stmt);
+        
+        echo "<table>";
+
+        $results = mysqli_stmt_get_result($stmt);
+       
+        while($row = mysqli_fetch_assoc($results))
+        {
+            echo "<tr><td><strong> Dato: </strong><br>" . $row['activityDate'] . "</td><td><strong> Aktivitet: </strong><br>" . $row['activityDesc'] . "</td></tr>";
+        }
+        echo "</table>";
         mysqli_close($conn); 
     }
 
