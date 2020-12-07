@@ -8,6 +8,7 @@
   <h4> Endre én verdi om gangen. </h4>
   <br>
   <div>
+  <!-- Different forms that change values in database, send to profil.inc.php-->
     <form action="includes/profil.inc.php" method="post">
       Fornavn:<input type="text" name="firstname" placeholder="Nytt Fornavn">
       <button type="submit" name="editFirstname" value="editFirstname">Endre Fornavn</button>

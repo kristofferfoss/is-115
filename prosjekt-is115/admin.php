@@ -16,7 +16,6 @@
 <body> 
 	<section class="mailToUsers">
 		<style>
-
 			.mailToUsers button {
 				float: left;
 				background-color: white;
@@ -103,13 +102,10 @@
         }
         else
         {
-            echo "Notice: ddmmyyyy for date & hh:mm for time";
+            echo "Notice: ddmmyyyy for date & hh:mm:ss for time";
         }
         ?>
     </section>
-
-
-
 </body>
 </html>
 

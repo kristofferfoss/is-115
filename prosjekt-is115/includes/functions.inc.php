@@ -1,8 +1,8 @@
 <?php
 // Check for empty input signup
-function emptyInputSignup($firstname, $lastname, $email, $mobilnummer, $adresse, $postno, $poststed, $username, $fødselsdato, $pwd, $pwdRepeat) {
+function emptyInputSignup($firstname, $lastname, $email, $phonenumber, $address, $postno, $postplace, $username, $birthdate, $pwd, $pwdRepeat) {
 	$result;
-	if (empty($firstname) || empty($lastname) || empty($email) || empty($mobilnummer) || empty($adresse) || empty($postno) || empty($poststed) || empty($username) || empty($fødselsdato) || empty($pwd) || empty($pwdRepeat)) {
+	if (empty($firstname) || empty($lastname) || empty($email) || empty($phonenumber) || empty($address) || empty($postno) || empty($postplace) || empty($username) || empty($birthdate) || empty($pwd) || empty($pwdRepeat)) {
 		$result = true;
 	}
 	else {
@@ -86,7 +86,7 @@ function uidExists($conn, $username) {
 }
 
 // Insert new user into database
-function createUser($conn, $firstname, $lastname, $email, $mobilnummer, $adresse, $postno, $poststed, $regdato, $username, $fødselsdato, $kjønn, $pwd) {
+function createUser($conn, $firstname, $lastname, $email, $phonenumber, $address, $postno, $postplace, $regdato, $username, $birthdate, $gender, $pwd) {
   $sql = "INSERT INTO users (usersFirstname, usersLastname, usersEmail, usersUid, usersDob, usersKjonn, usersPwd, usersPhone, usersPostno, usersPostplace, usersAddress, usersRegdate) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 	
 	$stmt = mysqli_stmt_init($conn);
@@ -97,7 +97,7 @@ function createUser($conn, $firstname, $lastname, $email, $mobilnummer, $adresse
 
 	$hashedPwd = password_hash($pwd, PASSWORD_DEFAULT);
 
-	mysqli_stmt_bind_param($stmt, "sssssssiisss", $firstname, $lastname, $email, $username, $fødselsdato, $kjønn, $hashedPwd, $mobilnummer, $postno, $poststed, $adresse, $regdato);
+	mysqli_stmt_bind_param($stmt, "sssssssiisss", $firstname, $lastname, $email, $username, $birthdate, $gender, $hashedPwd, $phonenumber, $postno, $postplace, $address, $regdato);
 	mysqli_stmt_execute($stmt);
 	mysqli_stmt_close($stmt);
 	mysqli_close($conn);

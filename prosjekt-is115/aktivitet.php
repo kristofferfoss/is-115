@@ -20,6 +20,7 @@
   <div class="tab-panel">
     <section id="Informasjon" class="tab-panel">
       <?php
+      //displays all future activities
         echo "<h3><center> Kommende aktiviteter </center></h3>";
         require_once "includes/aktivitet.inc.php";
         require_once "includes/dbh.inc.php";
@@ -27,13 +28,13 @@
         
         if(isset($_POST['book'])) 
         {
+          //figures out if button is pressed and books activity
           $actID = $_POST["book"];
           require_once "includes/aktivitet.inc.php";
           require_once "includes/dbh.inc.php";
           bookActivity($conn, $actID);
           echo "<h3 style='color: green; text-align: center;'>"."Du har meldt deg på!"."</h3>";
         }  
-
       ?>
     </section>
   </div>

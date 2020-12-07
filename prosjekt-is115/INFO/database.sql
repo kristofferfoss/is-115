@@ -1,3 +1,8 @@
+/*
+Creates a table that stores information about users. Note: one user must be added manually 
+before anyone can be registered through a signup form.
+Also, user_level must be changed to "1" to access admin page and functions.
+*/
 CREATE TABLE users (
   usersId int(11) PRIMARY KEY AUTO_INCREMENT NOT NULL,
   usersFirstname varchar(128) NOT NULL,
@@ -17,6 +22,10 @@ CREATE TABLE users (
   userKontigent int(1) DEFAULT '0',
 );
 
+/* 
+Creates a table that stores activities, one entry should be entered directly to the database before
+you enter one through a form on the admi.php page to avoid mistakes.
+*/
 CREATE TABLE activity (
   activityId int(11) PRIMARY KEY AUTO_INCREMENT NOT NULL,
   activityDesc varchar(200) NOT NULL,
@@ -27,6 +36,10 @@ CREATE TABLE activity (
   activitySted varchar(120) NOT NULL
 );
 
+/*
+Creates a many-to-many connection between the users and activity tables.
+One user can participate in many activities, and one activity can have many users.
+*/
 CREATE TABLE booking (
   booking_activityId int(11) NOT NULL,
   booking_userId int(11) NOT NULL,

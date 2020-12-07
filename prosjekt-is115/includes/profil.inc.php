@@ -1,8 +1,10 @@
 <?php 
     include "dbh.inc.php";
-    
+
+    //displays all info of user
     function displayInfo($conn) 
     {    
+        //collects user ID from session after login
         $ID = $_SESSION["userid"]; 
 
         $sql = "SELECT * FROM users WHERE usersId = ?;";
@@ -18,7 +20,7 @@
         echo "<table>";
         
         $results = mysqli_stmt_get_result($stmt);
-       
+       //prints all information in table
         while($row = mysqli_fetch_assoc($results))
         {
             echo "<tr><td><strong> Foravn: </strong><br>" . $row['usersFirstname'] . "</td><td><strong> Etternavn: </strong><br>" . $row['usersLastname'] . "</td><td><strong> Epost: </strong><br>" . $row['usersEmail'] . "</td><td><strong> Mobilnummer: </strong><br>" . $row['usersPhone'] . "</td></tr>"; 
@@ -27,10 +29,13 @@
         }
         echo "</table";
     }
+
+    //displays different non-essential information
     function displayMoreInfo($conn) 
     {    
         $ID = $_SESSION["userid"]; 
 
+        //collects two values from database
         $sql = "SELECT userInterests, userKontigent FROM users WHERE usersId = ?;";
 
         mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
@@ -43,23 +48,26 @@
         
         mysqli_stmt_execute($stmt);
         
-        
         $results = mysqli_stmt_get_result($stmt);
        
         while($row = mysqli_fetch_assoc($results))
         {
+            //Checks if values have been filled in yet
             if(empty($row['userInterests'])) 
             {
+                //option to fill in interests in database
                 echo "<p><center>Du har ikke lagt til noen interesser. </center></p><br>";
                 echo "<p><center>Legg til dine interresser: <p><center>";
                 echo "<form action='includes/profil.inc.php' method='post'> <input type='text' name='interesser' placeholder='Interesser'> <button type='submit' name='editInteresser' value='editInteresser'>Legg til Interesser</button>";
             }
             else 
             {
+                //alternative view if interests are filled out and want to be changed
                 echo "<p><center><strong> Interesser:  </strong><p><center>" . $row['userInterests'];
                 echo "<form action='includes/profil.inc.php' method='post'> Endre Interesser: <input type='text' name='interesser' placeholder='Interesser'> <button type='submit' name='editInteresser' value='editInteresser'>Endre Interesser</button>";
             }
             
+            //checks if kontigent has been paid
             if (empty($row['userKontigent'])) 
             {
                 echo "<br><p><center>Kontigent er ikke betalt.<p><center>";
@@ -71,10 +79,12 @@
         }
     }
 
+    //Displays all activities that have been booked by user
     function displayActivityHistory($conn) 
     {
         $ID = $_SESSION["userid"]; 
 
+        //collects two values that tells them what activites and when
         $sql = "SELECT activity.activityDesc, activity.activityDate FROM booking INNER JOIN activity ON booking.booking_activityId = activity.activityId INNER JOIN users ON booking.booking_userId = users.usersId WHERE users.usersId = ?;";
 
         mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
@@ -91,6 +101,7 @@
 
         $results = mysqli_stmt_get_result($stmt);
        
+        //prints activities into table
         while($row = mysqli_fetch_assoc($results))
         {
             echo "<tr><td><strong> Dato: </strong><br>" . $row['activityDate'] . "</td><td><strong> Aktivitet: </strong><br>" . $row['activityDesc'] . "</td></tr>";
@@ -99,6 +110,7 @@
         mysqli_close($conn); 
     }
 
+    //edit firstname handler
     if (isset($_POST["editFirstname"])) 
     {
         $firstname = ucfirst($_POST["firstname"]);
@@ -114,6 +126,7 @@
         header("location: ../endreProfil.php");
     }
 
+    //edit lastname handler
     if (isset($_POST["editLastname"])) 
     {
         $lastname = ucfirst($_POST["lastname"]);
@@ -129,6 +142,7 @@
         header("location: ../endreProfil.php");
     }
 
+    //edit email handler
     if (isset($_POST["editEmail"])) 
     {
         $email = $_POST["email"];
@@ -144,6 +158,7 @@
         header("location: ../endreProfil.php");
     }
 
+    //edit phonenumber handler
     if (isset($_POST["editPhone"])) 
     {
         $mobilnummer = $_POST["phone"];
@@ -159,6 +174,7 @@
         header("location: ../endreProfil.php");
     }
 
+    //edit address handler
     if (isset($_POST["editAddress"])) 
     {
         $adresse = $_POST["address"];
@@ -174,6 +190,7 @@
         header("location: ../endreProfil.php");
     }
 
+    //edit postagenumber handler
     if (isset($_POST["editPostno"])) 
     {
         $postno = $_POST["postno"];
@@ -189,6 +206,7 @@
         header("location: ../endreProfil.php");
     }
 
+    //edit postageplace handler
     if (isset($_POST["editPostplace"])) 
     {
         $poststed = ucfirst($_POST["postplace"]);
@@ -204,6 +222,7 @@
         header("location: ../endreProfil.php");
     }
 
+    //edit gender handler
     if (isset($_POST["editKjonn"])) 
     {
         $kjonn = ucfirst($_POST["kjonn"]);
@@ -219,6 +238,7 @@
         header("location: ../endreProfil.php");
     }
 
+    //edit interests handler
     if (isset($_POST["editInteresser"])) 
     {
         $interesser = ucfirst($_POST["interesser"]);
@@ -234,6 +254,7 @@
         header("location: ../profil.php");
     }
 
+    //edit firstname function
    function editFirstname($conn, $firstname, $ID)
     {
         $sql = "UPDATE users SET usersFirstname = '$firstname' WHERE usersId = $ID";
@@ -247,6 +268,7 @@
         mysqli_close($conn); 
     }
 
+    //edit lastname function
     function editLastname($conn, $lastname, $ID)
     {
         $sql = "UPDATE users SET usersLastname = '$lastname' WHERE usersId = $ID";
@@ -260,6 +282,7 @@
         mysqli_close($conn); 
     }
 
+    //edit email function
     function editEmail($conn, $email, $ID)
     {
         $sql = "UPDATE users SET usersEmail = '$email' WHERE usersId = $ID";
@@ -273,6 +296,7 @@
         mysqli_close($conn); 
     }
 
+    //edit phonenumber function
     function editPhone($conn, $mobilnummer, $ID)
     {
         $sql = "UPDATE users SET usersPhone = '$mobilnummer' WHERE usersId = $ID";
@@ -286,6 +310,7 @@
         mysqli_close($conn); 
     }
 
+    //edit address function
     function editAddress($conn, $adresse, $ID)
     {
         $sql = "UPDATE users SET usersAddress = '$adresse' WHERE usersId = $ID";
@@ -299,6 +324,7 @@
         mysqli_close($conn); 
     }
 
+    //edit postagenumber function
     function editPostno($conn, $postno, $ID)
     {
         $sql = "UPDATE users SET usersPostno = '$postno' WHERE usersId = $ID";
@@ -312,6 +338,7 @@
         mysqli_close($conn); 
     }
 
+    //edit postageplace function
     function editPostplace($conn, $poststed, $ID)
     {
         $sql = "UPDATE users SET usersPostplace = '$poststed' WHERE usersId = $ID";
@@ -325,6 +352,7 @@
         mysqli_close($conn); 
     }
 
+    //edit gender function
     function editKjonn($conn, $kjonn, $ID)
     {
         $sql = "UPDATE users SET usersKjonn = '$kjonn' WHERE usersId = $ID";
@@ -338,6 +366,7 @@
         mysqli_close($conn); 
     }
 
+    //edit interests function
     function editInteresser($conn, $interesser, $ID)
     {
         $sql = "UPDATE users SET userInterests = '$interesser' WHERE usersId = $ID";

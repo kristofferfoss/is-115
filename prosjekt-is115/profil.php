@@ -20,15 +20,18 @@
 <div class="tab-panel">
   <section id="Informasjon" class="tab-panel">
     <?php
+    //checks for an active session
     if (!isset($_SESSION['useruid']))
     {
+        //sends user to login if no active session exists
         header("Location: login.php");
-    die();
+        die();
     }
+    //displays information from database through profil.inc.php
     echo "<h3><center> Medlemsinformasjon </center><h3> <br>";
-      require_once "includes/profil.inc.php";
-      require_once "includes/dbh.inc.php";
-      displayInfo($conn);
+    require_once "includes/profil.inc.php";
+    require_once "includes/dbh.inc.php";
+    displayInfo($conn);
     ?>
   </section>
 </div>
@@ -40,21 +43,23 @@
         header("Location: login.php");
     die();
     }
+      //uses more funtions from profil.inc.php to print all information
       echo "<h3><center> Ytterligere Informajson </center><h3> <br>";
       require_once "includes/profil.inc.php";
       require_once "includes/dbh.inc.php";
+      //displays kontigent and interests
       displayMoreInfo($conn);
-
       echo "<br>";
       echo "<h3><center> Aktivitetshistorikk </center><h3> <br>";
       require_once "includes/profil.inc.php";
       require_once "includes/dbh.inc.php";
+      //displays activities
       displayActivityHistory($conn);
     ?>
   </section>
 </div>
 <section> 
- <button onclick="location.href='endreProfil.php'">Rediger profilinfo</button>
+  <center> <button onclick="location.href='endreProfil.php'">Rediger profilinfo</button></center>
 </section>
 </body>
 <?php
