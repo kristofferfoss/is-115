@@ -20,6 +20,7 @@
   <div class="tab-panel">
     <section id="Informasjon" class="tab-panel">
       <?php
+        echo "<h3><center> Kommende aktiviteter </center></h3>";
         require_once "includes/aktivitet.inc.php";
         require_once "includes/dbh.inc.php";
         displayActivity($conn);
@@ -31,7 +32,6 @@
           require_once "includes/dbh.inc.php";
           bookActivity($conn, $actID);
         }  
-        
       ?>
     </section>
   </div>

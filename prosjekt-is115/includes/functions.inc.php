@@ -141,5 +141,31 @@ function loginUser($conn, $username, $pwd) {
 		header("location: ../index.php?error=none");
 		exit();
 	}
+}
 
-} 
+function isAdmin($conn) 
+{
+	$ID = $_SESSION['userid'];
+
+	$sql = "SELECT user_level FROM users WHERE usersId = ?";
+
+	mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+	
+	$stmt = mysqli_stmt_init($conn);
+	
+	mysqli_stmt_prepare($stmt, $sql);
+	
+	mysqli_stmt_bind_param($stmt, "i", $ID);
+	
+	mysqli_stmt_execute($stmt);
+	
+	$results = mysqli_stmt_get_result($stmt);
+	
+	while($row = mysqli_fetch_assoc($results))
+	{
+		$_SESSION['user_level'] = $row['user_level'];
+	}
+	mysqli_stmt_close($stmt);
+	mysqli_close($conn);
+	
+}

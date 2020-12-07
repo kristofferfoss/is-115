@@ -13,7 +13,14 @@
     <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
-
+  <?php
+  if (isset($_SESSION["useruid"])) 
+  {
+    require_once "includes/dbh.inc.php";
+    require_once 'includes/functions.inc.php'; 
+    isAdmin($conn);
+  }
+  ?>
     <!--A quick navigation-->
     <nav>
       <div class="wrapper">
@@ -23,13 +30,16 @@
           <li><a href="index.php">Hjem</a></li>
           <?php
             if (isset($_SESSION["useruid"])) {
-              echo "<li><a href='admin.php'>Admin</a></li>";
               echo "<li><a href='medlemmer.php'>Medlemmer</a></li>";
               echo "<li><a href='profil.php'>Din Profil</a></li>";
               echo "<li><a href='aktivitet.php'>Aktiviteter</a></li>";
               echo "<li><a href='logout.php'>Logg Ut</a></li>";
-
-            } else {
+              if ($_SESSION['user_level'] == 1) 
+              {
+                echo "<li><a href='admin.php'>Admin</a></li>";
+              }
+            }
+            else {
               echo "<li><a href='signup.php'>Registrer</a></li>";
               echo "<li><a href='login.php'>Logg inn</a></li>";
             }

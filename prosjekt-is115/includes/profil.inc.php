@@ -50,23 +50,23 @@
         {
             if(empty($row['userInterests'])) 
             {
-                echo "Du har ikke lagt til noen interesser. <br>";
-                echo "Legg til dine interresser:";
+                echo "<p><center>Du har ikke lagt til noen interesser. </center></p><br>";
+                echo "<p><center>Legg til dine interresser: <p><center>";
                 echo "<form action='includes/profil.inc.php' method='post'> <input type='text' name='interesser' placeholder='Interesser'> <button type='submit' name='editInteresser' value='editInteresser'>Legg til Interesser</button>";
             }
             else 
             {
-                echo "<strong> Interesser:  </strong>" . $row['userInterests'];
+                echo "<p><center><strong> Interesser:  </strong><p><center>" . $row['userInterests'];
                 echo "<form action='includes/profil.inc.php' method='post'> Endre Interesser: <input type='text' name='interesser' placeholder='Interesser'> <button type='submit' name='editInteresser' value='editInteresser'>Endre Interesser</button>";
             }
             
             if (empty($row['userKontigent'])) 
             {
-                echo "<br>Kontigent er ikke betalt.";
+                echo "<br><p><center>Kontigent er ikke betalt.<p><center>";
             }
             else 
             {
-                echo "<br>Kontigent er betalt.";
+                echo "<br><p><center>Kontigent er betalt.<p><center>";
             }
         }
     }
