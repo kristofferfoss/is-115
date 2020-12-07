@@ -14,6 +14,7 @@
   </head>
   <body>
   <?php
+  //session check on all pages to check for admin
   if (isset($_SESSION["useruid"])) 
   {
     require_once "includes/dbh.inc.php";
@@ -25,11 +26,12 @@
     <nav>
       <div class="wrapper">
         <a href="index.php"><img src="img/neo.png" alt="Neo"></a>
-
         <ul>
           <li><a href="index.php">Hjem</a></li>
           <?php
-            if (isset($_SESSION["useruid"])) {
+            if (isset($_SESSION["useruid"])) 
+            {
+              //list of links if user is logged in
               echo "<li><a href='medlemmer.php'>Medlemmer</a></li>";
               echo "<li><a href='profil.php'>Din Profil</a></li>";
               echo "<li><a href='aktivitet.php'>Aktiviteter</a></li>";
@@ -39,7 +41,9 @@
                 echo "<li><a href='admin.php'>Admin</a></li>";
               }
             }
-            else {
+            else 
+            {
+              //list of links if user is not logged in
               echo "<li><a href='signup.php'>Registrer</a></li>";
               echo "<li><a href='login.php'>Logg inn</a></li>";
             }
@@ -47,6 +51,5 @@
         </ul>
       </div>
     </nav>
-
 <!--A quick wrapper to align the content (ends in footer.php)-->
 <div class="wrapper">

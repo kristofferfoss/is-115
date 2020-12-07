@@ -9,16 +9,16 @@
       Fornavn:<input type="text" name="firstname" placeholder="Fornavn">
       Etternavn:<input type="text" name="lastname" placeholder="Etternavn">
       Epost:<input type="text" name="email" placeholder="E-post">
-      Mobilnummer: <input type="number" name="mobilnummer" placeholder="Mobilnummer">
+      Mobilnummer: <input type="number" name="phonenumber" placeholder="Mobilnummer">
       Adresse:<input type="text" name="address" placeholder="Adresse">
       Postnummer: <input type="number" name="postno" placeholder="Postnummer">
-      Poststed:<input type="text" name="poststed" placeholder="Poststed">
+      Poststed:<input type="text" name="postplace" placeholder="Poststed">
       Brukernavn:<input type="text" name="uid" placeholder="Brukernavn">
       Fødselsdato:<input type="date" name="dob" required>
-      Kjønn:<br><select name="kjønn" id="kjønn" required>
-        <option value="mann">Mann</option>
-        <option value="dame">Dame</option>
-        <option value="annet">Annet</option>
+      Kjønn:<br><select name="gender" id="gender" required>
+        <option value="Mann">Mann</option>
+        <option value="Dame">Dame</option>
+        <option value="Annet">Annet</option>
       </select><br>
       Passord:<input type="password" name="pwd" placeholder="Passord">
       Gjenta passord:<input type="password" name="pwdrepeat" placeholder="Gjenta passord">

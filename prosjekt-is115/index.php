@@ -2,7 +2,7 @@
 <?php
   include_once 'header.php';
 ?>
-
+<!-- standard frontpage -->
 <section class="index-intro">
   <h1>~ Neo Ungdomsklubb ~</h1>
   <p>Velkommen til Neo Ungdomsklubb sin hjemmeside!</p>
@@ -16,6 +16,7 @@
   <div class="index-designere-list">
     <div class='left'>
       <h4>Milos Delevic</h4>
+      <!-- Retrieves pictures from img folder to display -->
       <a href="index.php"><img src="img/Milos.jpg" alt="Milos"></a>
       </div>
       <div>
