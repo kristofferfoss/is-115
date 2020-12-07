@@ -70,6 +70,23 @@
 
             mysqli_stmt_execute($stmt);
 
-            mysqli_close($conn);
+            //mysqli_close($conn);
         }
     }
+    function addActivity($conn, $activityDesc, $activityDate, $activityPerson, $activityStart, $activityEnd, $activityPlace) 
+    {
+        $sql = "INSERT INTO activity(activityDesc, activityDate, activityAnsvarlig, activityStarttid, activitySlutttid, activitySted) VALUES(?, ?, ?, ?, ?, ?)";
+
+        mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+            
+        $stmt = mysqli_stmt_init($conn);
+
+        mysqli_stmt_prepare($stmt, $sql);
+
+        mysqli_stmt_bind_param($stmt, "ssssss", $activityDesc, $activityDate, $activityPerson, $activityStart, $activityEnd, $activityPlace);
+
+        mysqli_stmt_execute($stmt);
+
+        mysqli_close($conn);
+    }
+?>

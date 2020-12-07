@@ -15,24 +15,6 @@ CREATE TABLE users (
   user_level int(11) DEFAULT '0',
   userInterests varchar(120),
   userKontigent int(1) DEFAULT '0',
-  info_id int(11),
-  CONSTRAINT info_id FOREIGN KEY (info_id) REFERENCES userInfo(infoId)
-);
-
-CREATE TABLE userInfo (
-  infoId int(11) PRIMARY KEY AUTO_INCREMENT NOT NULL,
-  infoInterests varchar(120) NOT NULL,
-  infoActivity varchar(120) NOT NULL,
-  infoStatus int(1) NOT NULL,
-  info_usersId int NOT NULL,
-  CONSTRAINT FK_users_id FOREIGN KEY (info_usersId) REFERENCES users(usersId)
-);
-
-CREATE TABLE rolls (
-  rollId int(11) PRIMARY KEY AUTO_INCREMENT NOT NULL,
-  rollDescription varchar(200) NOT NULL,
-  rolls_usersId int NOT NULL,
-  CONSTRAINT FK_users_id2 FOREIGN KEY (rolls_usersId) REFERENCES users(usersId)
 );
 
 CREATE TABLE activity (
