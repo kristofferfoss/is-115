@@ -25,7 +25,7 @@
         {
             echo "<tr><td><strong> Foravn: </strong><br>" . $row['usersFirstname'] . "</td><td><strong> Etternavn: </strong><br>" . $row['usersLastname'] . "</td><td><strong> Epost: </strong><br>" . $row['usersEmail'] . "</td><td><strong> Mobilnummer: </strong><br>" . $row['usersPhone'] . "</td></tr>"; 
             echo "<tr><td><strong> Adresse: </strong><br>" . $row['usersAddress'] . "</td><td><strong> Postnummer: </strong><br>" . $row['usersPostno'] . "</td><td><strong> Poststed: </strong><br>" . $row['usersPostplace'] . "</td><td><strong> Medlem siden: </strong><br>" . $row['usersRegdate'] . "</td></tr>"; 
-            echo "<tr><td><strong> Klubb ID: </strong><br>" . $row['usersId'] . "</td><td><strong> Kjønn: </strong><br>" . $row['usersKjonn'] . "</td><td><strong> Fødselsdato: </strong><br>" . $row['usersDob'] . "</td><td><strong> Brukernavn: </strong><br>" . $row['usersUid'] . "</td></tr>"; 
+            echo "<tr><td><strong> Klubb ID: </strong><br>" . $row['usersId'] . "</td><td><strong> Kjønn: </strong><br>" . $row['usersGender'] . "</td><td><strong> Fødselsdato: </strong><br>" . $row['usersDob'] . "</td><td><strong> Brukernavn: </strong><br>" . $row['usersUid'] . "</td></tr>"; 
         }
         echo "</table";
     }
@@ -36,7 +36,7 @@
         $ID = $_SESSION["userid"]; 
 
         //collects two values from database
-        $sql = "SELECT userInterests, userKontigent FROM users WHERE usersId = ?;";
+        $sql = "SELECT userInterests, userContigent FROM users WHERE usersId = ?;";
 
         mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
         
@@ -68,7 +68,7 @@
             }
             
             //checks if kontigent has been paid
-            if (empty($row['userKontigent'])) 
+            if (empty($row['userContigent'])) 
             {
                 echo "<br><p><center>Kontigent er ikke betalt.<p><center>";
             }

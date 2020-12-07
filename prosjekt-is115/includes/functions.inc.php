@@ -112,7 +112,7 @@ function uidExists($conn, $username)
 // Insert new user into database
 function createUser($conn, $firstname, $lastname, $email, $phonenumber, $address, $postno, $postplace, $regdate, $username, $birthdate, $gender, $pwd) 
 {
-  	$sql = "INSERT INTO users (usersFirstname, usersLastname, usersEmail, usersUid, usersDob, usersKjonn, usersPwd, usersPhone, usersPostno, usersPostplace, usersAddress, usersRegdate) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+  	$sql = "INSERT INTO users (usersFirstname, usersLastname, usersEmail, usersUid, usersDob, usersGender, usersPwd, usersPhone, usersPostno, usersPostplace, usersAddress, usersRegdate) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 	
 	$stmt = mysqli_stmt_init($conn);
 

@@ -21,12 +21,8 @@
 			<button type="submit" name="sendMail">Send mail</button>
 		</form>
 <?php
-	//function to send mail to all members that have not paid yet
-	if (isset($_POST['sendMail'])) 
-	{
-	//if the button is pressed a mail will be sent to members 
-	echo "<br><h4 style='text-align: left; margin-top: 25px;'>Mail regarding contigent has been sent to users:</h4>";
-
+	if (isset($_POST['sendMail'])) {
+	echo "<br><h4 style='text-align: left; margin-top: 25px; font-weight: bold;'>Mail regarding contigent has been sent to users:</h4>";
 	$mysqli = mysqli_connect('localhost', 'root', '', 'phpproject01');
 	//Selects all users with this value in "userKontigent"
 	$sql = "SELECT * FROM users WHERE userKontigent = 0";
@@ -70,16 +66,16 @@
 ?>
 </section>
 <section class="signup-form">
-	<h3 style="text-align: left;">Add activity</h3><br>
+	<h3 style="text-align: left;">Legg til aktivitet</h3><br>
 	<!-- Form to add activities -->
         <form method="post">
-            Activity:<input type="text" name="activityDesc" placeholder="Chess tournament">
-            Date:<input type="date" name="activityDate" placeholder="Date">
-            Responsible:<input type="text" name="activityPerson" placeholder="James Smith">
-            Start time: <input type="time" name="activityStart" placeholder="Start time">
-            End time: <input type="time" name="activityEnd" placeholder="End time">
-            Place:<input type="text" name="activityPlace" placeholder="123 Main Street, NY">
-            <button type="submit" name="submit"> Add activity </button>
+            Aktivitet:<input type="text" name="activityDesc" placeholder="Bordtennisturnering">
+            Dato:<input type="date" name="activityDate">
+            Ansvarlig:<input type="text" name="activityPerson" placeholder="Kjell Stenvik">
+            Start tid: <input type="time" name="activityStart">
+            Slutt tid: <input type="time" name="activityEnd">
+            Sted:<input type="text" name="activityPlace" placeholder="Bordtennisklubben KRS">
+            <button type="submit" name="submit"> Legg til aktivitet </button>
         </form>
         <?php
 		//checks if button has been pressed then runs function
@@ -99,12 +95,12 @@
 		//function from aktivitet.inc.php 
         addActivity($conn, $activityDesc, $activityDate, $activityPerson, $activityStart, $activityEnd, $activityPlace);
 		
-		echo "Activity successfully added.";
+		echo "Aktivitet ble lagt til.";
         }
         else
         {
 			//in case someone uses Safari where date and time types(html) do not work
-            echo "Notice: ddmmyyyy for date & hh:mm:ss for time";
+            echo "Merk: ddmmyyyy for dato & hh:mm for tid.";
         }
         ?>
     </section>

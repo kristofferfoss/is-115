@@ -15,11 +15,11 @@ CREATE TABLE users (
   usersEmail varchar(128) NOT NULL,
   usersUid varchar(128) NOT NULL,
   usersDob date NOT NULL,
-  usersKjonn varchar(5) NOT NULL,
+  usersGender varchar(5) NOT NULL,
   usersPwd varchar(128) NOT NULL,
   user_level int(11) DEFAULT '0',
   userInterests varchar(120),
-  userKontigent int(1) DEFAULT '0',
+  userContigent int(1) DEFAULT '0'
 );
 
 /* 
@@ -29,11 +29,11 @@ you enter one through a form on the admi.php page to avoid mistakes.
 CREATE TABLE activity (
   activityId int(11) PRIMARY KEY AUTO_INCREMENT NOT NULL,
   activityDesc varchar(200) NOT NULL,
-  activityDate date PRIMARY KEY NOT NULL,
-  activityAnsvarlig varchar(120) NOT NULL,
-  activityStarttid time NOT NULL,
-  activitySlutttid time NOT NULL,
-  activitySted varchar(120) NOT NULL
+  activityDate date NOT NULL,
+  activityOrganizer varchar(120) NOT NULL,
+  activityStarttime time NOT NULL,
+  activityEndtime time NOT NULL,
+  activityPlace varchar(120) NOT NULL
 );
 
 /*

@@ -37,19 +37,23 @@
 </div>
 <div class="tab-panel">
   <section id="Informasjon" class="tab-panel">
+    <center> <button onclick="location.href='endreProfil.php'">Rediger profilinfo</button></center>
     <?php
     if (!isset($_SESSION['useruid']))
     {
         header("Location: login.php");
     die();
     }
+
       //uses more funtions from profil.inc.php to print all information
+      echo "--------------------------------------------------------------------------------------------------------------------------------------------------------------";
       echo "<h3><center> Ytterligere Informajson </center><h3> <br>";
       require_once "includes/profil.inc.php";
       require_once "includes/dbh.inc.php";
       //displays kontigent and interests
       displayMoreInfo($conn);
       echo "<br>";
+      echo "--------------------------------------------------------------------------------------------------------------------------------------------------------------";
       echo "<h3><center> Aktivitetshistorikk </center><h3> <br>";
       require_once "includes/profil.inc.php";
       require_once "includes/dbh.inc.php";
@@ -58,9 +62,6 @@
     ?>
   </section>
 </div>
-<section> 
-  <center> <button onclick="location.href='endreProfil.php'">Rediger profilinfo</button></center>
-</section>
 </body>
 <?php
   include_once 'footer.php';

@@ -21,7 +21,7 @@
        //Prints every value into a table
         while($row = mysqli_fetch_assoc($results))
         {
-            echo "<tr><td><strong> Dato: </strong><br>" . $row['activityDate'] . "</td><td><strong> Aktivitet: </strong><br>" . $row['activityDesc'] . "</td><td><strong> Ansvarlig: </strong><br>" . $row['activityAnsvarlig'] . "</td><td><strong> Starter: </strong><br>" . $row['activityStarttid'] . "</td><td><strong> Slutter: </strong><br>" . $row['activitySlutttid'] . "</td><td><strong> Sted: </strong><br>" . $row['activitySted'] . "</td><td><form method='post'> <button type='submit' name='book' value='$row[activityId]'> Meld deg på </button> </form></td></tr>";  
+            echo "<tr><td><strong> Dato: </strong><br>" . $row['activityDate'] . "</td><td><strong> Aktivitet: </strong><br>" . $row['activityDesc'] . "</td><td><strong> Ansvarlig: </strong><br>" . $row['activityOrganizer'] . "</td><td><strong> Starter: </strong><br>" . $row['activityStarttime'] . "</td><td><strong> Slutter: </strong><br>" . $row['activityEndtime'] . "</td><td><strong> Sted: </strong><br>" . $row['activityPlace'] . "</td><td><form method='post'> <button type='submit' name='book' value='$row[activityId]'> Meld deg på </button> </form></td></tr>";  
         }
         
     } if (isset($_GET['book'])) {
@@ -86,7 +86,7 @@
     function addActivity($conn, $activityDesc, $activityDate, $activityPerson, $activityStart, $activityEnd, $activityPlace) 
     {
         //collects values from form in admin.php
-        $sql = "INSERT INTO activity(activityDesc, activityDate, activityAnsvarlig, activityStarttid, activitySlutttid, activitySted) VALUES(?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO activity(activityDesc, activityDate, activityOrganizer, activityStarttime, activityEndtime, activityPlace) VALUES(?, ?, ?, ?, ?, ?)";
 
         mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
             

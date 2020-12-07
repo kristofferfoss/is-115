@@ -44,7 +44,7 @@ if ($resultat-> num_rows > 0)
     while ($row = $resultat-> fetch_assoc()) 
     {
         //prints specified rows into table
-        echo "<tr><td>". $row['usersUid'] . "</td><td>". $row['usersRegdate'] . "</td><td>". $row['usersEmail'] . "</td><td>". $row['usersKjonn']. "</td></tr>";
+        echo "<tr><td>". $row['usersUid'] . "</td><td>". $row['usersRegdate'] . "</td><td>". $row['usersEmail'] . "</td><td>". $row['usersGender']. "</td></tr>";
     }
     echo "</table>";
 }

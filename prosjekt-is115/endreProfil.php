@@ -38,8 +38,8 @@
       <button type="submit" name="editPostplace" value="editPostplace">Endre Poststed</button>
     </form>
     <form action="includes/profil.inc.php" method="post">
-      Kjønn:<input type="text" name="kjonn" placeholder="Nytt Kjønn">
-      <button type="submit" name="editKjonn" value="editKjonn">Endre Kjønn</button>
+      Kjønn:<input type="text" name="gender" placeholder="Nytt Kjønn">
+      <button type="submit" name="editGender" value="editGender">Endre Kjønn</button>
     </form>
   </div>
 </section>
