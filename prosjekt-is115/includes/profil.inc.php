@@ -70,11 +70,11 @@
             //checks if kontigent has been paid
             if (empty($row['userContigent'])) 
             {
-                echo "<br><p><center>Kontigent er ikke betalt.<p><center>";
+                echo "<br><br><p><center>Kontigent er ikke betalt.<p><center>";
             }
             else 
             {
-                echo "<br><p><center>Kontigent er betalt.<p><center>";
+                echo "<br><br><p><center>Kontigent er betalt.<p><center>";
             }
         }
     }
