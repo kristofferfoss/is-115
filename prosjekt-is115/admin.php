@@ -103,7 +103,7 @@
         }
         else
         {
-            echo "Notice: ddmmyyyy for date & hh:mm:ss for time";
+            echo "Notice: ddmmyyyy for date & hh:mm for time";
         }
         ?>
     </section>
