@@ -62,7 +62,7 @@ if (isset($_POST["submit"]))
   }
   // If we get to here, it means there are no user errors
   // Now we insert the user into the database
-  createUser($conn, $firstname, $lastname, $email, $phonenumber, $address, $postno, $postplace, $regdato, $username, $birthdate, $gender, $pwd);
+  createUser($conn, $firstname, $lastname, $email, $phonenumber, $address, $postno, $postplace, $regdate, $username, $birthdate, $gender, $pwd);
 
 } 
 else 

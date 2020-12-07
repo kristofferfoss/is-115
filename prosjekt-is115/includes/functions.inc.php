@@ -110,7 +110,7 @@ function uidExists($conn, $username)
 }
 
 // Insert new user into database
-function createUser($conn, $firstname, $lastname, $email, $phonenumber, $address, $postno, $postplace, $regdato, $username, $birthdate, $gender, $pwd) 
+function createUser($conn, $firstname, $lastname, $email, $phonenumber, $address, $postno, $postplace, $regdate, $username, $birthdate, $gender, $pwd) 
 {
   	$sql = "INSERT INTO users (usersFirstname, usersLastname, usersEmail, usersUid, usersDob, usersKjonn, usersPwd, usersPhone, usersPostno, usersPostplace, usersAddress, usersRegdate) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 	
@@ -125,7 +125,7 @@ function createUser($conn, $firstname, $lastname, $email, $phonenumber, $address
 	//Creates an incrypted password
 	$hashedPwd = password_hash($pwd, PASSWORD_DEFAULT);
 
-	mysqli_stmt_bind_param($stmt, "sssssssiisss", $firstname, $lastname, $email, $username, $birthdate, $gender, $hashedPwd, $phonenumber, $postno, $postplace, $address, $regdato);
+	mysqli_stmt_bind_param($stmt, "sssssssiisss", $firstname, $lastname, $email, $username, $birthdate, $gender, $hashedPwd, $phonenumber, $postno, $postplace, $address, $regdate);
 	
 	mysqli_stmt_execute($stmt);
 	
