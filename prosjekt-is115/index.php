@@ -21,6 +21,11 @@
       <div>
       <h4>Kristoffer Foss</h4>
       <a href="index.php"><img src="img/Kristoffer.jpeg" alt="Kristoffer"></a>
+     <style>
+        h4 {
+          text-align: center;
+        }
+      </style> 
     </div>
 
 </section>

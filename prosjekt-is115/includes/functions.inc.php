@@ -137,22 +137,9 @@ function loginUser($conn, $username, $pwd) {
 		session_start();
 		$_SESSION["userid"] = $uidExists["usersId"];
 		$_SESSION["useruid"] = $uidExists["usersUid"];
+		$_SESSION["user_level"] = $uidExists["user_level"];
 		header("location: ../index.php?error=none");
 		exit();
 	}
-	define ('USER_LEVEL_ADMIN', '1');
-	if (!isAdmin() ) {
-		header("location: ../index.php?error=none");
-	}
-	elseif (isAdmin() ) {
-		header("location: ..//admin.php");
-	}
-}
 
-function isAdmin() {
-	if (isset($_SESSION['usersId']) && $_SESSION['usersId'] && USER_LEVEL_ADMIN == $_SESSION['usersId']['users_level']) {
-		return true;
-	} else {
-		return false;
-	}
-}
+} 

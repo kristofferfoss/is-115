@@ -11,6 +11,7 @@
 </head>
 <body>
 <h2>Medlemsliste</h2>
+<button style="background-color: #E1E1E1;" onclick="location.href='filtrering.php'">Sorter etter..</button>
 <table>
 	<tr>
 		<th>Brukernavn</th>
@@ -40,6 +41,7 @@ if ($resultat-> num_rows > 0) {
 else {
     echo "Det er ingen medlemmer ennå.";
 }
+
 $conn-> close(); 
 ?>
 </table>
