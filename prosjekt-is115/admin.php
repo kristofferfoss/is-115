@@ -18,7 +18,7 @@
 		<style>
 
 			.mailToUsers button {
-				float: right;
+				float: left;
 				background-color: white;
 				color: black;
 				border: 3px solid red;
@@ -33,20 +33,22 @@
 			}
 			.contigentReminder h3 {
 				margin-top: 20px;
-				text-align: right;
+				text-align: left;
 			}
-		</style> 	<form action="" method="POST">
-		<h3 style='text-align: right;'>Contigent reminder:</h3><br><button type="submit" name="sendMail">Send mail</button>
-					</form>
+		</style> 	
+		<form action="" method="POST">
+			<h3 style='text-align: left;'>Contigent reminder:</h3><br>
+			<button type="submit" name="sendMail">Send mail</button>
+		</form>
 <?php
 	if (isset($_POST['sendMail'])) {
-	echo "<h4 style='text-align: right; margin-top: 25px;'>Mail regarding contigent has been sent to users.</h4>";
+	echo "<br><h4 style='text-align: left; margin-top: 25px;'>Mail regarding contigent has been sent to users.</h4>";
 	$mysqli = mysqli_connect('localhost', 'root', '', 'phpproject01');
 	$sql = "SELECT * FROM users WHERE userKontigent = 0";
-include'includes/dbh.inc.php';
-error_reporting(0);
-error_reporting(E_ALL);
-ini_set('display_errors', '1');
+	include'includes/dbh.inc.php';
+	error_reporting(0);
+	error_reporting(E_ALL);
+	ini_set('display_errors', '1');
 
 	$result = mysqli_query($conn, $sql);
 	$usersEmail = array();
@@ -55,14 +57,15 @@ ini_set('display_errors', '1');
 			$usersEmail[] = $row;
 		}
 	}
-	foreach ($usersEmail as $emailUsers) {
-		echo $emailUsers['usersEmail']." ";
 
-		$to = $emailUsers;
+	foreach ($usersEmail as $emailUsers) {
+		echo $emailUsers['usersEmail'].", ";
+
+		$to = implode(",", $emailUsers);;
 		$subject = 'Contigent status: unpaid';
 		$message = 'Dear user,
 					Your contigent-status is unpaid. Click here to pay';
-		$headers = 'From: Admin - Neo Ungdomssklubb';
+		$headers = 'From: Admin@neoungdom.com' . phpversion();
 		mail($to, $subject, $message, $headers);
 	}
 }
