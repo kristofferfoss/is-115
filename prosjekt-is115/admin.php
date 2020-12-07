@@ -14,34 +14,14 @@
 	<title></title>
 </head>
 <body> 
-	<section class="mailToUsers">
-		<style>
-			.mailToUsers button {
-				float: left;
-				background-color: white;
-				color: black;
-				border: 3px solid red;
-				border-radius: 12px;
-				cursor: pointer;
-				margin-top: 0px;
-				transition-duration: 0.4s;
-			}
-			.mailToUsers button:hover {
-				background-color: red;
-				color: white;
-			}
-			.contigentReminder h3 {
-				margin-top: 20px;
-				text-align: left;
-			}
-		</style> 	
+	<section class="mailToUsers">	
 		<form action="" method="POST">
 			<h3 style='text-align: left;'>Contigent reminder:</h3><br>
 			<button type="submit" name="sendMail">Send mail</button>
 		</form>
 <?php
 	if (isset($_POST['sendMail'])) {
-	echo "<br><h4 style='text-align: left; margin-top: 25px;'>Mail regarding contigent has been sent to users.</h4>";
+	echo "<br><h4 style='text-align: left; margin-top: 25px;'>Mail regarding contigent has been sent to users:</h4>";
 	$mysqli = mysqli_connect('localhost', 'root', '', 'phpproject01');
 	$sql = "SELECT * FROM users WHERE userKontigent = 0";
 	include'includes/dbh.inc.php';
@@ -58,7 +38,7 @@
 	}
 
 	foreach ($usersEmail as $emailUsers) {
-		echo $emailUsers['usersEmail'].", ";
+		echo $emailUsers['usersEmail'].", <br> ";
 
 		$to = implode(",", $emailUsers);;
 		$subject = 'Contigent status: unpaid';
