@@ -47,7 +47,7 @@
 
       //uses more funtions from profil.inc.php to print all information
       echo "--------------------------------------------------------------------------------------------------------------------------------------------------------------";
-      echo "<h3><center> Ytterligere Informajson </center><h3> <br>";
+      echo "<h3><center> Ytterligere Informasjon </center><h3> <br>";
       require_once "includes/profil.inc.php";
       require_once "includes/dbh.inc.php";
       //displays kontigent and interests
