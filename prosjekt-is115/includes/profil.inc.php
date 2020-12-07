@@ -67,14 +67,15 @@
                 echo "<form action='includes/profil.inc.php' method='post'> Endre Interesser: <input type='text' name='interesser' placeholder='Interesser'> <button type='submit' name='editInteresser' value='editInteresser'>Endre Interesser</button>";
             }
             
+            echo "<br><br>Kontigentstatus: ";
             //checks if kontigent has been paid
             if (empty($row['userContigent'])) 
             {
-                echo "<br><p><center>Kontigent er ikke betalt.<p><center>";
+                echo "<br><p style='color: red; font-weight: bold;'>Ubetalt</p>";
             }
             else 
             {
-                echo "<br><p><center>Kontigent er betalt.<p><center>";
+                echo "<br><p style='color: green; font-weight: bold;'>Betalt</p>";
             }
         }
     }
