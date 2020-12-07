@@ -15,27 +15,9 @@
 </head>
 <body> 
 	<section class="mailToUsers">
-		<style>
-
-			.mailToUsers button {
-				float: right;
-				background-color: white;
-				color: black;
-				border: 3px solid red;
-				border-radius: 12px;
-				cursor: pointer;
-				margin-top: 0px;
-				transition-duration: 0.4s;
-			}
-			.mailToUsers button:hover {
-				background-color: red;
-				color: white;
-			}
-			.contigentReminder h3 {
-				margin-top: 20px;
-				text-align: right;
-			}
-		</style> 	<form action="" method="POST">
+	<link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+ 	<form action="" method="POST">
 		<h3 style='text-align: right;'>Contigent reminder:</h3><br><button type="submit" name="sendMail">Send mail</button>
 					</form>
 <?php
@@ -100,7 +82,7 @@ ini_set('display_errors', '1');
         }
         else
         {
-            echo "Notice: ddmmyyyy for date & hh:mm:ss for time";
+            echo "Notice: ddmmyyyy for date & hh:mm for time";
         }
         ?>
     </section>
