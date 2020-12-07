@@ -24,8 +24,8 @@
 	if (isset($_POST['sendMail'])) {
 	echo "<br><h4 style='text-align: left; margin-top: 25px; font-weight: bold;'>Mail regarding contigent has been sent to users:</h4>";
 	$mysqli = mysqli_connect('localhost', 'root', '', 'phpproject01');
-	//Selects all users with this value in "userKontigent"
-	$sql = "SELECT * FROM users WHERE userKontigent = 0";
+	//Selects all users with this value in "userContigent"
+	$sql = "SELECT * FROM users WHERE userContigent = 0";
 	
 	include 'includes/dbh.inc.php';
 	

@@ -1,7 +1,6 @@
 /*
-Creates a table that stores information about users. Note: one user must be added manually 
-before anyone can be registered through a signup form.
-Also, user_level must be changed to "1" to access admin page and functions.
+Creates a table that stores information about users. 
+Also, user_level must be changed to "1" directly in database to access admin page and functions.
 */
 CREATE TABLE users (
   usersId int(11) PRIMARY KEY AUTO_INCREMENT NOT NULL,
@@ -23,8 +22,7 @@ CREATE TABLE users (
 );
 
 /* 
-Creates a table that stores activities, one entry should be entered directly to the database before
-you enter one through a form on the admi.php page to avoid mistakes.
+Creates a table that stores activities.
 */
 CREATE TABLE activity (
   activityId int(11) PRIMARY KEY AUTO_INCREMENT NOT NULL,
