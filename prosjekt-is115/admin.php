@@ -1,19 +1,28 @@
 <?php 
 	include_once 'header.php';
+	include_once 'dbh.inc.php';
 ?>
-<body> 
-	<section class="signup-form">
-		<form method="post">
-			Aktivitetsnavn:<input type="text" name="activityDesc" placeholder="Aktivitetsnavn">
-			Dato:<input type="date" name="activityDate" placeholder="Dato">
-			Anvarlig:<input type="text" name="activityPerson" placeholder="Ansvarlig">
-			Start tid: <input type="time" name="activityStart" placeholder="Start tid">
-			Slutt tid: <input type="time" name="activityEnd" placeholder="Slutt tid">
-			Sted:<input type="text" name="activityPlace" placeholder="Sted">
-			<button type="submit" name="submit"> Legg til aktivitet </button>
-		</form>
-		<?php
-		if (isset($_POST["submit"])) {
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<?php
+	$sql = "SELECT * FROM users";
+	$resultat = mysqli_query($conn, $sql);
+	$medlemmerEpost = array();
+	if (mysqli_num_rows($resultat) > 0) {
+		while($row = mysqli_fetch_assoc($resultat)) {
+			$datas[] = $row;
+		}
+	}
+	foreach ($medlemmerEpost as $epostMedlemmer) {
+		echo $epostMedlemmer['usersEmail']." ";
+	}
+?>
+</body>
+</html>
 
 		// First we get the form data from the URL
 		$activityDesc = ucfirst($_POST["activityDesc"]);

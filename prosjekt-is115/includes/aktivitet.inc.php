@@ -21,7 +21,9 @@
         {
             echo "<tr><td><strong> Dato: </strong><br>" . $row['activityDate'] . "</td><td><strong> Aktivitet: </strong><br>" . $row['activityDesc'] . "</td><td><strong> Ansvarlig: </strong><br>" . $row['activityAnsvarlig'] . "</td><td><strong> Starter: </strong><br>" . $row['activityStarttid'] . "</td><td><strong> Slutter: </strong><br>" . $row['activitySlutttid'] . "</td><td><strong> Sted: </strong><br>" . $row['activitySted'] . "</td><td><form method='post'> <button type='submit' name='book' value='$row[activityId]'> Meld deg på </button> </form></td></tr>";  
         }
-        echo "</table";
+        
+    } if (isset($_GET['book'])) {
+        echo "Du har meldt deg på!";
     }
 
     function checkActivity($conn, $actID) 
@@ -70,7 +72,12 @@
 
             mysqli_stmt_execute($stmt);
 
+<<<<<<< Updated upstream
             //mysqli_close($conn);
+=======
+            mysqli_close($conn);
+
+>>>>>>> Stashed changes
         }
     }
     function addActivity($conn, $activityDesc, $activityDate, $activityPerson, $activityStart, $activityEnd, $activityPlace) 
