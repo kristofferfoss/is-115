@@ -31,8 +31,9 @@
           require_once "includes/aktivitet.inc.php";
           require_once "includes/dbh.inc.php";
           bookActivity($conn, $actID);
-          echo "Du har medlt deg på!";
+          echo "<h3 style='color: green; text-align: center;'>"."Du har meldt deg på!"."</h3>";
         }  
+
       ?>
     </section>
   </div>

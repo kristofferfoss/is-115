@@ -72,12 +72,8 @@
 
             mysqli_stmt_execute($stmt);
 
-<<<<<<< Updated upstream
-            //mysqli_close($conn);
-=======
-            mysqli_close($conn);
 
->>>>>>> Stashed changes
+
         }
     }
     function addActivity($conn, $activityDesc, $activityDate, $activityPerson, $activityStart, $activityEnd, $activityPlace) 
